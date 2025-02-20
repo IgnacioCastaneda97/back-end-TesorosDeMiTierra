@@ -1,11 +1,9 @@
 package com.tesorosdemitierra.back.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Pedidos {
@@ -17,24 +15,39 @@ public class Pedidos {
     private double total;
     private boolean envio;
     private String estado;
-    private long cliente_id;
-    private long producto_id;
-    private long metodo_pago_id;
+
+
+    @ManyToOne
+    @JoinColumn(name="cliente_id")
+    private Clientes client;
+
+    @ManyToOne
+    @JoinColumn(name="metodo_pago_id")
+    private MetodosPago metodo;
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "producto_pedido",
+            joinColumns = @JoinColumn(name = "producto_id"),
+            inverseJoinColumns = @JoinColumn(name = "pedido_id")
+    )
+    private List<Productos> productos;
 
     public Pedidos() {
 
     }
 
-    public Pedidos(long id_pedido, Date fecha, String direccion, double total, boolean envio, String estado, long cliente_id, long producto_id, long metodo_pago_id) {
+    public Pedidos(long id_pedido, Date fecha, String direccion, double total, boolean envio, String estado, Clientes client, MetodosPago metodo, List<Productos> productos) {
         this.id_pedido = id_pedido;
         this.fecha = fecha;
         this.direccion = direccion;
         this.total = total;
         this.envio = envio;
         this.estado = estado;
-        this.cliente_id = cliente_id;
-        this.producto_id = producto_id;
-        this.metodo_pago_id = metodo_pago_id;
+        this.client = client;
+        this.metodo = metodo;
+        this.productos = productos;
     }
 
     public long getId_pedido() {
@@ -85,27 +98,27 @@ public class Pedidos {
         this.estado = estado;
     }
 
-    public long getCliente_id() {
-        return cliente_id;
+    public Clientes getClient() {
+        return client;
     }
 
-    public void setCliente_id(long cliente_id) {
-        this.cliente_id = cliente_id;
+    public void setClient(Clientes client) {
+        this.client = client;
     }
 
-    public long getProducto_id() {
-        return producto_id;
+    public MetodosPago getMetodo() {
+        return metodo;
     }
 
-    public void setProducto_id(long producto_id) {
-        this.producto_id = producto_id;
+    public void setMetodo(MetodosPago metodo) {
+        this.metodo = metodo;
     }
 
-    public long getMetodo_pago_id() {
-        return metodo_pago_id;
+    public List<Productos> getProductos() {
+        return productos;
     }
 
-    public void setMetodo_pago_id(long metodo_pago_id) {
-        this.metodo_pago_id = metodo_pago_id;
+    public void setProductos(List<Productos> productos) {
+        this.productos = productos;
     }
 }

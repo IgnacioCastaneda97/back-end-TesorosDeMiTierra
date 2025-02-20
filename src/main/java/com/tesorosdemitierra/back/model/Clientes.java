@@ -1,9 +1,8 @@
 package com.tesorosdemitierra.back.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Clientes {
@@ -16,16 +15,19 @@ public class Clientes {
     private String contrasena;
     private String telefono;
 
+@OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+private List<Pedidos> pedidos;
 
     public Clientes() {
     }
 
-    public Clientes(Long id_cliente, String nombre_completo, String email, String contrasena, String telefono) {
+    public Clientes(long id_cliente, String nombre_completo, String email, String contrasena, String telefono, List<Pedidos> pedidos) {
         this.id_cliente = id_cliente;
         this.nombre_completo = nombre_completo;
         this.email = email;
         this.contrasena = contrasena;
         this.telefono = telefono;
+        this.pedidos = pedidos;
     }
 
     public long getId_cliente() {
@@ -66,6 +68,14 @@ public class Clientes {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public List<Pedidos> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedidos> pedidos) {
+        this.pedidos = pedidos;
     }
 }
 

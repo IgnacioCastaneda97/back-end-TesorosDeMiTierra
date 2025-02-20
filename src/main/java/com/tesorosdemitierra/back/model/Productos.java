@@ -1,9 +1,8 @@
 package com.tesorosdemitierra.back.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Productos {
@@ -17,10 +16,13 @@ public class Productos {
     private int stock;
     private String imagen;
 
+    @ManyToMany(mappedBy = "productos")
+    private List<Pedidos> pedidos;
+
     public Productos() {
     }
 
-    public Productos(long id_Producto, String nombre, String descripcion, Double precio, String region, int stock, String imagen) {
+    public Productos(long id_Producto, String nombre, String descripcion, Double precio, String region, int stock, String imagen, List<Pedidos> pedidos) {
         this.id_Producto = id_Producto;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -28,6 +30,7 @@ public class Productos {
         this.region = region;
         this.stock = stock;
         this.imagen = imagen;
+        this.pedidos = pedidos;
     }
 
     public long getId_Producto() {
@@ -84,5 +87,13 @@ public class Productos {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    public List<Pedidos> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedidos> pedidos) {
+        this.pedidos = pedidos;
     }
 }
