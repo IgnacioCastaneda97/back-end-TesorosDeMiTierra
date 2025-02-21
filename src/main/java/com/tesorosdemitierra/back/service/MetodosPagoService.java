@@ -24,19 +24,19 @@ public class MetodosPagoService implements IMetodosPagoService{
     }
 
     @Override
-    public void deleteMetodoPago(long id) {
+    public void deleteMetodoPago(Long id) {
         metodosPagoRepository.deleteById(id);
     }
 
     @Override
-    public MetodosPago findMetodoPago(long id) {
+    public MetodosPago findMetodoPago(Long id) {
 
         MetodosPago metodosPago = metodosPagoRepository.findById(id).orElse(null);
         return metodosPago;
     }
 
     @Override
-    public void updateMetodoPago(long id, MetodosPago metodoPagoActualizado) {
+    public void updateMetodoPago(Long id, MetodosPago metodoPagoActualizado) {
         MetodosPago metodosPago = metodosPagoRepository.findById(id).orElse(null);
         if (metodosPago!=null){
             // update de los datos de producto

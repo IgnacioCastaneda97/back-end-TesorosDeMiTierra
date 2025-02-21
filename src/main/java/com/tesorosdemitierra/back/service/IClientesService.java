@@ -17,13 +17,13 @@ public interface IClientesService {
 
     // metodo para borrar un Cliente
     // recibe como parametro un ID
-    public void deleteClient(long id);
+    public void deleteClient(Long id);
 
 
     //metodo para buscar un Clientes
-    public Clientes findClient(long id);
+    public Clientes findClient(Long id);
 
     // metodo para modificar un Clientes
-    void updateClient(long id, Clientes clienteActualizado);
+    void updateClient(Long id, Clientes clienteActualizado);
 }
 

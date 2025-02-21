@@ -14,12 +14,12 @@ public interface IPedidosService {
 
     // metodo para borrar un pedido
     // recibe como parametro un ID
-    public void deletePedido(long id);
+    public void deletePedido(Long id);
 
 
     //metodo para buscar un  pedido
-    public Pedidos findPedido(long id);
+    public Pedidos findPedido(Long id);
 
     // metodo para modificar un  pedido
-    void updatePedido(long id, Pedidos pedidoActualizado);
+    void updatePedido(Long id, Pedidos pedidoActualizado);
 }

@@ -15,13 +15,13 @@ public interface IMetodosPagoService {
 
     // metodo para borrar un metodo de pago
     // recibe como parametro un ID
-    public void deleteMetodoPago(long id);
+    public void deleteMetodoPago(Long id);
 
 
     //metodo para buscar un Metodo de Pago
-    public MetodosPago findMetodoPago(long id);
+    public MetodosPago findMetodoPago(Long id);
 
     // metodo para modificar un Metodo de Pago
-    void updateMetodoPago(long id, MetodosPago metodoPagoActualizado);
+    void updateMetodoPago(Long id, MetodosPago metodoPagoActualizado);
 
 }

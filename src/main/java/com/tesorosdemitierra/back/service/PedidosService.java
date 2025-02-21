@@ -24,18 +24,18 @@ public class PedidosService implements IPedidosService{
     }
 
     @Override
-    public void deletePedido(long id) {
+    public void deletePedido(Long id) {
         pedidosRepository.deleteById(id);
     }
 
     @Override
-    public Pedidos findPedido(long id) {
+    public Pedidos findPedido(Long id) {
        Pedidos pedido = pedidosRepository.findById(id).orElse(null);
         return pedido;
     }
 
     @Override
-    public void updatePedido(long id, Pedidos pedidoActualizado) {
+    public void updatePedido(Long id, Pedidos pedidoActualizado) {
         // busque pedido por id
         Pedidos pedido = pedidosRepository.findById(id).orElse(null);
             if (pedido!=null){

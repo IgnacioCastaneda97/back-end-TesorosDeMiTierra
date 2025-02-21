@@ -8,7 +8,7 @@ import java.util.List;
 public class MetodosPago {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id_metodo_pago;
+    private Long id_metodo_pago;
     private String tipo_pago;
 
     @OneToMany(mappedBy = "metodo", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -17,17 +17,17 @@ public class MetodosPago {
     public MetodosPago() {
     }
 
-    public MetodosPago(long id_metodo_pago, String tipo_pago, List<Pedidos> pedidos) {
+    public MetodosPago(Long id_metodo_pago, String tipo_pago, List<Pedidos> pedidos) {
         this.id_metodo_pago = id_metodo_pago;
         this.tipo_pago = tipo_pago;
         this.pedidos = pedidos;
     }
 
-    public long getId_metodo_pago() {
+    public Long getId_metodo_pago() {
         return id_metodo_pago;
     }
 
-    public void setId_metodo_pago(long id_metodo_pago) {
+    public void setId_metodo_pago(Long id_metodo_pago) {
         this.id_metodo_pago = id_metodo_pago;
     }
 

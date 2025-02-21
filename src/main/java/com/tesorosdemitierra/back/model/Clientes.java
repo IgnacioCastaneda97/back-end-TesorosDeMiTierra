@@ -9,7 +9,7 @@ public class Clientes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id_cliente;
+    private Long id_cliente;
     private String nombre_completo;
     private String email;
     private String contrasena;
@@ -21,7 +21,7 @@ private List<Pedidos> pedidos;
     public Clientes() {
     }
 
-    public Clientes(long id_cliente, String nombre_completo, String email, String contrasena, String telefono, List<Pedidos> pedidos) {
+    public Clientes(Long id_cliente, String nombre_completo, String email, String contrasena, String telefono, List<Pedidos> pedidos) {
         this.id_cliente = id_cliente;
         this.nombre_completo = nombre_completo;
         this.email = email;
@@ -30,11 +30,11 @@ private List<Pedidos> pedidos;
         this.pedidos = pedidos;
     }
 
-    public long getId_cliente() {
+    public Long getId_cliente() {
         return id_cliente;
     }
 
-    public void setId_cliente(long id_cliente) {
+    public void setId_cliente(Long id_cliente) {
         this.id_cliente = id_cliente;
     }
 

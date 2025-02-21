@@ -14,12 +14,12 @@ public interface IProductosService {
 
     // metodo para borrar un producto
 // recibe como parametro un ID
-    public void deleteProduct(long id);
+    public void deleteProduct(Long id);
 
     //metodo para buscar un producto
-    public Productos findProduct(long id);
+    public Productos findProduct(Long id);
 
     // metodo para modificar un producto
-    void updateProduct(long id, Productos productoActualizado);
+    void updateProduct(Long id, Productos productoActualizado);
 
 }

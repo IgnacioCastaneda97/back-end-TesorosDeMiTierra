@@ -9,7 +9,7 @@ import java.util.List;
 public class Pedidos {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id_pedido;
+    private Long id_pedido;
     private Date fecha;
     private String direccion;
     private double total;
@@ -38,7 +38,7 @@ public class Pedidos {
 
     }
 
-    public Pedidos(long id_pedido, Date fecha, String direccion, double total, boolean envio, String estado, Clientes client, MetodosPago metodo, List<Productos> productos) {
+    public Pedidos(Long id_pedido, Date fecha, String direccion, double total, boolean envio, String estado, Clientes client, MetodosPago metodo, List<Productos> productos) {
         this.id_pedido = id_pedido;
         this.fecha = fecha;
         this.direccion = direccion;
@@ -50,11 +50,11 @@ public class Pedidos {
         this.productos = productos;
     }
 
-    public long getId_pedido() {
+    public Long getId_pedido() {
         return id_pedido;
     }
 
-    public void setId_pedido(long id_pedido) {
+    public void setId_pedido(Long id_pedido) {
         this.id_pedido = id_pedido;
     }
 

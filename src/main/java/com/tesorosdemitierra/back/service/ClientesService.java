@@ -25,18 +25,18 @@ public class ClientesService implements IClientesService{
     }
 
     @Override
-    public void deleteClient(long id) {
+    public void deleteClient(Long id) {
         clientesRepository.deleteById(id);
     }
 
     @Override
-    public Clientes findClient(long id) {
+    public Clientes findClient(Long id) {
         Clientes cliente = clientesRepository.findById(id).orElse(null);
         return cliente;
     }
 
     @Override
-    public void updateClient(long id, Clientes clienteActualizado) {
+    public void updateClient(Long id, Clientes clienteActualizado) {
         Clientes cliente = clientesRepository.findById(id).orElse(null);
         if (cliente!=null){
             cliente.setNombre_completo(clienteActualizado.getNombre_completo());

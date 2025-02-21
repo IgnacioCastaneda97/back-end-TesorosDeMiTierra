@@ -8,7 +8,7 @@ import java.util.List;
 public class Productos {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id_Producto;
+    private Long id_Producto;
     private String nombre;
     private String descripcion;
     private Double precio;
@@ -22,7 +22,7 @@ public class Productos {
     public Productos() {
     }
 
-    public Productos(long id_Producto, String nombre, String descripcion, Double precio, String region, int stock, String imagen, List<Pedidos> pedidos) {
+    public Productos(Long id_Producto, String nombre, String descripcion, Double precio, String region, int stock, String imagen, List<Pedidos> pedidos) {
         this.id_Producto = id_Producto;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -33,11 +33,11 @@ public class Productos {
         this.pedidos = pedidos;
     }
 
-    public long getId_Producto() {
+    public Long getId_Producto() {
         return id_Producto;
     }
 
-    public void setId_Producto(long id_Producto) {
+    public void setId_Producto(Long id_Producto) {
         this.id_Producto = id_Producto;
     }
 

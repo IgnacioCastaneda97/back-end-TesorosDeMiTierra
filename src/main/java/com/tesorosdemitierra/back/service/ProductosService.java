@@ -25,18 +25,18 @@ public class ProductosService implements IProductosService{
     }
 
     @Override
-    public void deleteProduct(long id) {
+    public void deleteProduct(Long id) {
         productosRepository.deleteById(id);
     }
 
     @Override
-    public Productos findProduct(long id) {
+    public Productos findProduct(Long id) {
         Productos productos = productosRepository.findById(id).orElse(null);
         return productos;
     }
 
     @Override
-    public void updateProduct(long id, Productos productoActualizado) {
+    public void updateProduct(Long id, Productos productoActualizado) {
         Productos productos = productosRepository.findById(id).orElse(null);
         if (productos!=null){
             productos.setNombre(productoActualizado.getNombre());
