@@ -1,11 +1,17 @@
 package com.tesorosdemitierra.back.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id_pedido")
 public class Pedidos {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -25,12 +31,11 @@ public class Pedidos {
     @JoinColumn(name="metodo_pago_id")
     private MetodosPago metodo;
 
-
     @ManyToMany
     @JoinTable(
             name = "producto_pedido",
-            joinColumns = @JoinColumn(name = "producto_id"),
-            inverseJoinColumns = @JoinColumn(name = "pedido_id")
+            joinColumns = @JoinColumn(name = "pedido_id"),
+            inverseJoinColumns = @JoinColumn(name = "producto_id")
     )
     private List<Productos> productos;
 
