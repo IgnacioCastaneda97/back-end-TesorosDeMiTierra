@@ -26,8 +26,8 @@ public class ClientesService implements IClientesService{
         return clientesRepository.save(clienteLogin);
     }
     // Métdo de carga de usuario implementado desde UserDetailsService
-    public UserDetails findByUserEmail(String email) throws UsernameNotFoundException {
-        Clientes cliente = clientesRepository.findByUserEmail(email);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Clientes cliente = clientesRepository.findByEmail(username);
         if (cliente == null) {
             throw new UsernameNotFoundException("Usuario no encontrado");
         }

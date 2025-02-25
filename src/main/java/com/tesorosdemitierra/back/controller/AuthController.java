@@ -31,7 +31,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody Clientes cliente) {
-        UserDetails userDetails = clientesService.findByUserEmail(cliente.getEmail());
+        UserDetails userDetails = clientesService.loadUserByUsername(cliente.getEmail());
         if (userDetails != null && passwordEncoder.matches(cliente.getContrasena(), userDetails.getPassword())) {
             String token = jwtUtil.generateToken(userDetails.getUsername());
             return ResponseEntity.ok(token);
