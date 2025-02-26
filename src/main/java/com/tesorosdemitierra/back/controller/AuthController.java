@@ -10,7 +10,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:5500")
 @RestController
+
 @RequestMapping("/auth")
 public class AuthController {
 
@@ -29,13 +31,34 @@ public class AuthController {
         return ResponseEntity.ok("Usuario registrado con éxito");
     }
 
+//    @PostMapping("/login")
+//    public ResponseEntity<String> login(@RequestBody Clientes cliente) {
+//        System.out.println("Email recibido: " + cliente.getEmail()); System.out.println("Contraseña recibida: " + cliente.getContrasena());
+//        UserDetails userDetails = clientesService.loadUserByUsername(cliente.getEmail());
+//        System.out.println("user Details"+ userDetails.getPassword());
+//        if (userDetails != null && passwordEncoder.matches(cliente.getContrasena(), userDetails.getPassword())) {
+//            String token = jwtUtil.generateToken(userDetails.getUsername());
+//            return ResponseEntity.ok(token);
+//        }
+//        return ResponseEntity.status(401).body("Credenciales inválidas");
+//    }
+
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody Clientes cliente) {
+        System.out.println("Email recibido: " + cliente.getEmail());
+        System.out.println("Contraseña recibida: " + cliente.getContrasena());
+
+        if (cliente.getContrasena() == null || cliente.getContrasena().isEmpty()) {
+            return ResponseEntity.status(400).body("Error: La contraseña no puede estar vacía");
+        }
+
         UserDetails userDetails = clientesService.loadUserByUsername(cliente.getEmail());
+
         if (userDetails != null && passwordEncoder.matches(cliente.getContrasena(), userDetails.getPassword())) {
             String token = jwtUtil.generateToken(userDetails.getUsername());
             return ResponseEntity.ok(token);
         }
+
         return ResponseEntity.status(401).body("Credenciales inválidas");
     }
 

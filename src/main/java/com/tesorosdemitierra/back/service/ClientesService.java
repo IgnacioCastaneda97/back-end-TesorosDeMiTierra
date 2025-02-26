@@ -42,6 +42,7 @@ public class ClientesService implements IClientesService{
 
     @Override
     public void saveClient(Clientes cliente) {
+        cliente.setContrasena(passwordEncoder.encode(cliente.getContrasena()));
         clientesRepository.save(cliente);
     }
 
